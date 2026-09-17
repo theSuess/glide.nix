@@ -20,6 +20,7 @@ let
   ];
 
   mkFirefoxModule = import "${home-manager.outPath}/modules/programs/firefox/mkFirefoxModule.nix";
+  wrapGlide = import ../wrap-glide.nix pkgs.wrapFirefox;
 in
 {
   imports = [
@@ -42,7 +43,7 @@ in
   config = mkIf cfg.enable {
     programs.glide-browser = {
       package = lib.mkDefault (
-        pkgs.wrapFirefox
+        wrapGlide
           (self.packages.${pkgs.stdenv.hostPlatform.system}.glide-browser-bin-unwrapped.override {
             policies = cfg.policies;
           })
