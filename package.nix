@@ -132,6 +132,7 @@ stdenv.mkDerivation {
     inherit applicationName;
     libName = "glide-browser-bin-${version}";
     ffmpegPackage = ffmpeg_9;
+    ffmpegSupport = true; # nixos-26.05
     withFFmpeg = true;
     withGSSAPI = true;
     inherit gtk3;
